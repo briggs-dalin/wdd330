@@ -122,6 +122,14 @@ button {
   position: relative;
   text-align: center;
 }
+.cart-count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  color: white;
+  font-size: 12px;
+  background: red;
+}
 
 .cart svg {
   width: 25px;
