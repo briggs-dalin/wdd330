@@ -1,4 +1,14 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  loadHeaderFooter,
+} from "./utils.mjs";
+
+loadHeaderFooter();
+renderCartContents();
+
+const initialCartItems = getLocalStorage("so-cart") || [];
+cartSuperscript(initialCartItems);
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
@@ -34,7 +44,6 @@ function removeCartItem(event) {
 
   const cartItemRemoved = cartItems.filter((item) => item.Id !== itemId);
   setLocalStorage("so-cart", cartItemRemoved);
-  
 
   renderCartContents();
 }
@@ -81,8 +90,6 @@ function cartSubtotal(items) {
   }
 }
 
-renderCartContents();
-
 function cartSuperscript(items) {
   const cartCountElement = document.querySelector(".cart-count");
   const cartCount = items.length;
@@ -91,8 +98,8 @@ function cartSuperscript(items) {
   } else {
     cartCountElement.classList.remove("hide");
 
-  if (cartCount > 0) {
-    cartCountElement.textContent = cartCount;
+    if (cartCount > 0) {
+      cartCountElement.textContent = cartCount;
+    }
   }
- }
 }
