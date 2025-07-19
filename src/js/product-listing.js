@@ -1,10 +1,10 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
-import { loadHeaderFooter, getParams } from "./utils.mjs";
+import { loadHeaderFooter, getParam } from "./utils.mjs";
 
 loadHeaderFooter();
 
-const category = getParams("category");
+const category = getParam("category") || "tents";
 
 const categoryElement = document.querySelector("#category-selected");
 categoryElement.innerHTML = category;
