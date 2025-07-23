@@ -304,7 +304,7 @@ button {
   background-color: #fff;
   font-family: var(--font-body);
   color: var(--dark-grey);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .checkout h2 {
@@ -335,7 +335,7 @@ button {
 .checkout__payment label {
   font-weight: bold;
   font-size: 1.2rem;
-  padding:10px;
+  padding: 10px;
   color: var(--tertiary-color);
 }
 
@@ -404,8 +404,6 @@ button#checkoutSubmit:hover {
     grid-template-columns: 1fr;
   }
 }
-
-
 
 @media screen and (min-width: 500px) {
   body {
