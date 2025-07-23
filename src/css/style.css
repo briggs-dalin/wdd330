@@ -295,6 +295,117 @@ button {
   display: block;
   object-fit: cover;
 }
+.checkout {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 8px;
+  background-color: #fff;
+  font-family: var(--font-body);
+  color: var(--dark-grey);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.checkout h2 {
+  font-family: var(--font-headline);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.checkout-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.checkout__name,
+.checkout__address,
+.checkout__payment {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.checkout__name label,
+.checkout__address label,
+.checkout__payment label {
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding:10px;
+  color: var(--tertiary-color);
+}
+
+.checkout__name input,
+.checkout__address input,
+.checkout__payment input {
+  padding: 0.5rem;
+  border: 2px solid var(--light-grey);
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+}
+
+.checkout__payment {
+  grid-template-columns: 1fr 1fr;
+}
+
+.checkout-summary {
+  background-color: var(--light-grey);
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.order__summary {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.5rem 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+}
+
+.order__summary > div:nth-child(odd) {
+  text-align: left;
+}
+
+.order__summary > div:nth-child(even) {
+  text-align: right;
+  font-weight: normal;
+  color: var(--dark-grey);
+}
+
+button#checkoutSubmit {
+  margin-top: 1rem;
+  background-color: var(--secondary-color);
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button#checkoutSubmit:hover {
+  background-color: var(--tertiary-color);
+}
+
+/* Responsive tweaks */
+
+@media (max-width: 480px) {
+  .checkout__name,
+  .checkout__address,
+  .checkout__payment {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 @media screen and (min-width: 500px) {
   body {

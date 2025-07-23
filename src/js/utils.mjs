@@ -30,48 +30,35 @@ export function getParam(param) {
   return product
 }
 
-// Stretch Activity Week 2
-export function renderListWithTemplate(
-  templateFn,
-  parentElement,
-  list,
-  position = "afterbegin",
-  clear = false,
-) {
-  // Clear the parent element if needed
+export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(template);
+  // if clear is true we need to clear out the contents of the parent.
   if (clear) {
     parentElement.innerHTML = "";
   }
-  const htmlStrings = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-export function renderWithTemplate(
-  templateFn,
-  parentElement,
-  data,
-  callback
-  
-) {
-  parentElement.insertAdjacentHTML("afterbegin", templateFn);
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
   if (callback) {
     callback(data);
   }
 }
 
 async function loadTemplate(path) {
-  const html = await fetch(path).then((res) => res.text());
-  // const template = document.createElement("template");
-  // template.innerHTML = html;
-  return html;
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
 }
 
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("/partials/header.html");
-  const footerTemplate = await loadTemplate("/partials/footer.html");
-  
-  const header = document.querySelector("#header");
-  const footer = document.querySelector("#footer");
-  renderWithTemplate(headerTemplate, header);
-  renderWithTemplate(footerTemplate, footer);
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+
+  const headerElement = document.querySelector("#main-header");
+  const footerElement = document.querySelector("#main-footer");
+
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
 }

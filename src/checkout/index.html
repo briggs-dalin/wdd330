@@ -14,7 +14,7 @@
     <main class="divider checkout">
       <h2>Review & Place your Order</h2>
       <section class="checkout-form">
-        <form name="checkout">
+        <form id="checkout-form" name="checkout" novalidate>
           <fieldset>
             <legend></legend>
             <div class="checkout__name">
@@ -24,8 +24,8 @@
               <input type="text" name="lname" id="lname" required />
             </div>
             <div class="checkout__address">
-              <label for="address">Address</label>
-              <input type="text" name="address" id="address" required />
+              <label for="street">Street Address</label>
+              <input type="text" name="street" id="street" required />
               <label for="city">City</label>
               <input type="text" name="city" id="city" required />
               <label for="state">State</label>
@@ -39,10 +39,10 @@
             <div class="checkout__payment">
               <label for="cardNumber">Card Number</label>
               <input type="text" name="cardNumber" id="cardNumber" required />
-              <label for="exp">Expiration</label>
-              <input type="text" name="exp" id="exp" required />
-              <label for="cvv">CVV</label>
-              <input type="text" name="cvv" id="cvv" required />
+              <label for="expiration">Expiration</label>
+              <input type="text" name="expiration" id="expiration" required />
+              <label for="code">Security Code</label>
+              <input type="text" name="code" id="code" required />
             </div>
           </fieldset>
           <fieldset class="checkout-summary">
@@ -53,12 +53,12 @@
               <div id="numberItems"></div>
               <div>Subtotal</div>
               <div id="cartTotal"></div>
-              <div>Shipping</div>
               <div>Tax</div>
               <div id="tax"></div>
+              <div>Shipping</div>
               <div id="shipping"></div>
               <div>Total</div>
-              <div id="total"></div>
+              <div id="orderTotal"></div>
             </div>
           </fieldset>
           <button type="submit" id="checkoutSubmit">Checkout</button>
