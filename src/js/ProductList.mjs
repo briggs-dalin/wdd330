@@ -9,6 +9,7 @@ function productCardTemplate(product) {
         <p>${product.NameWithoutBrand}</p>
         <p class="product-card__price">$${product.FinalPrice}</p>
       </a>
+      <button class="quick-view-btn" data-id="${product.Id}">Quick View</button>
     </li>
     `;
 }
