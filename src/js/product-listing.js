@@ -11,36 +11,44 @@ const listing = new ProductList(category, dataSource, element);
 
 listing.init();
 
-const modal = document.getElementById("quick-view-modal");
-
+const modal = document.querySelector("#quick-view-modal");
 const closeBtn = modal.querySelector(".close-btn");
 const image = modal.querySelector("#modal-image");
 const name = modal.querySelector("#modal-name");
 const price = modal.querySelector("#modal-price");
 const description = modal.querySelector("#modal-description");
 
-// Event listener for Quick View buttons and modal close
+//fallback description
+function getFallbackDescription(product) {
+  return (
+    product.DescriptionHtmlSimple ||
+    product.Description ||
+    product.Features ||
+    `No description available for "${product.Name}".`
+  );
+}
+
+// Show modal on "Quick View" button click
 document.addEventListener("click", async (e) => {
   if (e.target.classList.contains("quick-view-btn")) {
     const productId = e.target.dataset.id;
     try {
       const product = await dataSource.findProductById(productId);
 
-      image.src = product.Images.PrimaryMedium;
+      image.src = product.Images.PrimaryLarge || product.Images.PrimaryMedium;
       image.alt = product.Name;
       name.textContent = product.Name;
       price.textContent = `$${product.FinalPrice}`;
-      description.textContent =
-        product.Description || "No description available.";
+      description.innerHTML = getFallbackDescription(product);
 
       modal.classList.remove("hidden");
-    } catch (error) {
-      //console.error("Failed to load product details:", error);
+    } catch (err) {
+      //console.error("Error loading product for quick view:", err);
       alert("Sorry, product details could not be loaded.");
     }
   }
 
-  // Close modal when clicking close button or outside modal content
+  // Hide modal when background or close button is clicked
   if (e.target === modal || e.target === closeBtn) {
     modal.classList.add("hidden");
   }
